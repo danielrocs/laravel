@@ -7,7 +7,7 @@ Verifica a vesão do Composer
 ```sh
 $ composer -V
 ```
-Atualizar o composer [Composer](https://getcomposer.org/download/)
+Atualizar o [Composer](https://getcomposer.org/download/)
 
 ### Update Via Laravel Installer
 
