@@ -10,3 +10,11 @@ Atualizar o composer
 $ npm install --production
 $ NODE_ENV=production node app
 ```
+
+
+### Update Via Laravel Installer
+
+First, download the Laravel installer using Composer:
+```sh
+composer global require "laravel/installer"
+```
