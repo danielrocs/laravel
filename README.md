@@ -29,3 +29,10 @@ You may also view the current version of your Laravel installation using the --v
 ```sh
 $ php artisan --version
 ```
+
+### Testando a aplicação
+
+```sh
+$ php artisan serve
+```
+
