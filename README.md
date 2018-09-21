@@ -3,14 +3,11 @@ Laravel - Exemplo e aplicações de teste
 
 ### Atualizar o composer
 
-Atualizar o composer
-[Composer](https://getcomposer.org/download/)
-
+Verifica a vesão do Composer
 ```sh
-$ npm install --production
-$ NODE_ENV=production node app
+$ composer -V
 ```
-
+Atualizar o composer [Composer](https://getcomposer.org/download/)
 
 ### Update Via Laravel Installer
 
