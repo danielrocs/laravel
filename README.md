@@ -49,3 +49,22 @@ $ php artisan serve
 
 </ul>
 
+### Instale o Apache:
+
+Instale o servidor Web Apache2
+
+```bash
+$ sudo apt update
+$ sudo apt install apache2
+```
+
+Comando usados para stop, start e enable Apache2 `services` 
+
+```bash
+$ sudo systemctl stop apache2.service
+$ sudo systemctl start apache2.service
+$ sudo systemctl enable apache2.service
+```
+
+
+
