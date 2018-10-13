@@ -134,6 +134,24 @@ Em seguida, copie e cole o conteúdo abaixo no arquivo e salve-o. Substitua a li
 ```
 Salve o arquivo e saia.
 
+Dica: Para remover um diretório 
+```bash
+$ sudo rm -Rf MyProject
+```
 
+### Passo 5: Ative o Laravel e o Rewrite Module
+
+Depois de configurar o VirtualHost acima, habilite-o executando os comandos abaixo
+```bash
+$ sudo a2ensite laravel.conf
+$ sudo a2enmod rewrite
+```
+
+### Etapa 6: Reinicie o Apache2
+
+Para carregar todas as configurações acima, reinicie o Apache2 executando os comandos abaixo.
+```bash
+$ sudo systemctl restart apache2.service
+```
 
 
