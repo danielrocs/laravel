@@ -49,9 +49,11 @@ $ php artisan serve
 
 </ul>
 
+## Instalar Laravel no Ubuntu 18.04
+
 ### Instale o Apache:
 
-Instale o servidor Web Apache2
+Passo 1: Instale o servidor Web Apache2
 
 ```bash
 $ sudo apt update
@@ -65,6 +67,24 @@ $ sudo systemctl stop apache2.service
 $ sudo systemctl start apache2.service
 $ sudo systemctl enable apache2.service
 ```
+
+### Step 2: Install PHP 7.2 and Related Modules
+
+Para instalar o PHP e os módulos relacionados, execute os comandos abaixo
+```bash
+$ sudo apt install php7.2 libapache2-mod-php7.2 php7.2-mbstring php7.2-xmlrpc php7.2-soap php7.2-gd php7.2-xml php7.2-cli php7.2-zip
+```
+
+Depois de instalar o PHP, execute os comandos abaixo para abrir o arquivo padrão do PHP-FPM.
+```bash
+$ sudo nano /etc/php/7.2/apache2/php.ini
+```
+
+Em seguida, faça a alteração das seguintes linhas abaixo no arquivo e salve.
+
+memory_limit = 256M
+upload_max_filesize = 64M
+cgi.fix_pathinfo=0
 
 
 
