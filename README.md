@@ -175,7 +175,7 @@ Observações: Por padrão, o Ubuntu não permite acesso através do navegador d
 
 A raiz do documento padrão do Ubuntu é /var/www/html. Você pode criar seus próprios hosts virtuais em /var/www. Isso é diferente dos lançamentos anteriores, o que proporciona maior segurança na caixa.
 
-Em caso de erro na exibição editi o arquivo 
+Em caso de erro na exibição atualize o arquivo `apache2.conf`
 ```bash
 $ sudo nano /etc/apache2/apache2.conf
 ```
