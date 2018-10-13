@@ -243,3 +243,52 @@ Você também pode precisar instalar módulos com base nos requisitos de sua apl
 $ sudo apt-cache search php7*
 ```
 
+### Etapa 6 - Instalação do MySQL
+Agora que temos nosso servidor web pronto e funcionando, é hora de instalar o MySQL.
+```bash
+$ sudo apt install mysql-server
+```
+
+Quando a instalação estiver concluída, execute um script de segurança simples que vem pré-instalado com o MySQL e que irá remover alguns padrões perigosos e bloquear o acesso ao seu sistema de banco de dados. Inicie o script interativo executando:
+```bash
+$ sudo mysql_secure_installation
+```
+Você será perguntado se você quer configurar o VALIDATE PASSWORD PLUGIN.
+
+Nota: A habilitação dessa funcionalidade é algo que deve ser avaliado. Se habilitado, senhas que não seguem o critério especificado serão rejeitadas pelo MySQL com um erro. Isso irá causar problemas se você utilizar uma senha fraca juntamente com software que configura automaticamente as credenciais de usuário do MySQL, tais como os pacotes do Ubuntu para o phpMyAdmin. É seguro deixar a validação desativada, mas você deve sempre utilizar senhas fortes e exclusivas para as credenciais do banco de dados.
+
+Responda Y para Sim, ou qualquer outra coisa para continuar sem a habilitação.
+
+VALIDATE PASSWORD PLUGIN can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD plugin?
+
+Press y|Y for Yes, any other key for No:
+
+Se você responder "yes", você será solicitado a selecionar um nível de validação de senha. Tenha em mente que se você digitar 2, para o nível mais forte, você receberá erros quando tentar configurar qualquer senha que não contenha números, letras maiúsculas e minúsculas, e caracteres especiais, ou que seja baseada em palavras comuns do dicionário.
+
+There are three levels of password validation policy:
+
+- LOW    Length >= 8
+- MEDIUM Length >= 8, numeric, mixed case, and special characters
+- RONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1
+
+Independentemente de você escolher configurar o VALIDATE PASSWORD PLUGIN, seu servidor em seguida irá solicitar que você selecione e confirme a senha para o usuário root do MySQL. Esta é uma conta administrativa no MySQL que possui privilégios avançados. Pense nela como sendo similar à conta de root para o próprio servidor (embora esta que você está configurando agora é uma conta específica do MySQL). Certifique-se de que esta é uma senha forte e exclusiva, e não a deixe em branco.
+
+Se você habilitou a validação de senha, será mostrado a força da senha de root atual, e será perguntado se você quer alterar aquela senha. Se você estiver satisfeito com sua senha atual, digite N para "não" no prompt:
+
+Using existing password for root.
+
+Estimated strength of the password: 100
+
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : n
+
+Para o restante das perguntas, pressione Y e aperte a tecla Enter para cada prompt. Isso irá remover alguns usuários anônimos e o banco de dados de teste, desabilitar logins remotos de root, e carregar essas novas regras de forma que o MySQL respeite imediatamente as alterações que fizemos. 
+
+
+
+
+
