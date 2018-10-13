@@ -53,11 +53,12 @@ $ php artisan serve
 
 ### Instale o Apache:
 
-Passo 1: Instale o servidor Web Apache2
+Passo 1: Instale o servidor Web Apache2 e o pacote git
 
 ```bash
 $ sudo apt update
 $ sudo apt install apache2
+$ sudo apt install git
 ```
 
 Comando usados para stop, start e enable Apache2 `services` 
@@ -68,7 +69,7 @@ $ sudo systemctl start apache2.service
 $ sudo systemctl enable apache2.service
 ```
 
-### Step 2: Install PHP 7.2 and Related Modules
+### Step 2: Instale o PHP 7.2 e seus módulos
 
 Para instalar o PHP e os módulos relacionados, execute os comandos abaixo
 ```bash
@@ -82,9 +83,14 @@ $ sudo nano /etc/php/7.2/apache2/php.ini
 
 Em seguida, faça a alteração das seguintes linhas abaixo no arquivo e salve.
 
-memory_limit = 256M
-upload_max_filesize = 64M
-cgi.fix_pathinfo=0
+- memory_limit = 256M
+- upload_max_filesize = 64M
+- cgi.fix_pathinfo=0  *não fazer alteração
+- max_input_time = 60 *Em segundos
+- post_max_size = 80M
+
+
+
 
 
 
