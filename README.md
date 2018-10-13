@@ -218,7 +218,28 @@ Atualize o arquivo para
 </Directory>
 ```
 
+#### Outras configurações do Apache
+Para habilitar ou desabilitar um site hospedado com o Apache, você pode usar os comandos 'a2ensite' e 'a2dissite', respectivamente. Ambos os comandos usam essencialmente a mesma sintaxe:
 
+- a2ensite <site>
+- a2dissite <site>
 
+onde '<site>' é o nome do arquivo de configuração do Host Virtual do seu site, localizado em '/ etc / apache2 / sites-available /', menos a extensão '.conf'. Por exemplo, se o arquivo de configuração do Host Virtual do seu site se chamar 'example.com.conf', então os comandos se parecerão com </ site>
+```bash
+$ a2ensite example.com
+$ a2dissite example.com
+```
 
+Existem outras maneiras mais complicadas de fazer isso, mas esses comandos basicamente apenas automatizam esses processos, então meu conselho é usar esses comandos para garantir que tudo esteja sempre configurado corretamente. Além disso, lembre-se de reiniciar o Apache depois de executar esses comandos. O comando exato dependerá de qual distribuição Linux você está usando, mas provavelmente será um dos dois comandos a seguir:
+```bash
+$ sudo systemctl restart apache2
+$ sudo service apache2 restart
+```
+
+#### Instalar módulos do PHP 7
+
+Você também pode precisar instalar módulos com base nos requisitos de sua aplicação. Use o seguinte comando para procurar os módulos do PHP 7 disponíveis no repositório de pacotes.
+```bash
+$ sudo apt-cache search php7*
+```
 
