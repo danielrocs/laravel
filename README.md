@@ -172,6 +172,7 @@ Outra configuração mais simples
 
 Depois de configurar o VirtualHost acima, habilite-o executando os comandos abaixo
 ```bash
+$ sudo a2dissite 000-default.conf
 $ sudo a2ensite laravel.conf
 $ sudo a2enmod rewrite
 ```
@@ -270,11 +271,35 @@ Você pode fazer uma verificação imediata para verificar se tudo correu como p
 $ http://ip_do_seu_servidor
 ```
 
+Antes de implementarmos as alterações que fizemos, verifique para ter certeza de que não cometemos nenhum erro de sintaxe:
+```bash
+$ sudo apache2ctl configtest
+```
+
 ### Etapa 6 - Instalação do MySQL
 Agora que temos nosso servidor web pronto e funcionando, é hora de instalar o MySQL.
 ```bash
 $ sudo apt install mysql-server
 ```
+
+#### Teste o MySql
+Acesse o MySQL’s SQL pelo shell:
+```bash
+$ sudo mysql -u root -p
+```
+
+Crie um banco de dados e um usuário com permissões para isso. Neste exemplo, o banco de dados é chamado de webdata, o usuário webuser e senha password. Certifique-se de digitar sua própria senha. Isso deve ser diferente da senha raiz do MySQL:
+```bash
+CREATE DATABASE webdata;
+CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
+GRANT ALL ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';
+
+FLUSH PRIVILEGES;
+EXIT;
+```
+
 
 Quando a instalação estiver concluída, execute um script de segurança simples que vem pré-instalado com o MySQL e que irá remover alguns padrões perigosos e bloquear o acesso ao seu sistema de banco de dados. Inicie o script interativo executando:
 ```bash
