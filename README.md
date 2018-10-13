@@ -90,6 +90,11 @@ Em seguida, faça a alteração das seguintes linhas abaixo no arquivo e salve.
 - max_input_time = 60 *Em segundos
 - post_max_size = 80M
 
+Instale o PHP Extension para suporte ao MySQL:
+```bash
+$ sudo apt install php-mysql -y
+```
+
 #### Instalar módulos do PHP 7
 
 Você também pode precisar instalar módulos com base nos requisitos de sua aplicação. Use o seguinte comando para procurar os módulos do PHP 7 disponíveis no repositório de pacotes.
