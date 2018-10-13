@@ -90,6 +90,13 @@ Em seguida, faça a alteração das seguintes linhas abaixo no arquivo e salve.
 - max_input_time = 60 *Em segundos
 - post_max_size = 80M
 
+#### Instalar módulos do PHP 7
+
+Você também pode precisar instalar módulos com base nos requisitos de sua aplicação. Use o seguinte comando para procurar os módulos do PHP 7 disponíveis no repositório de pacotes.
+```bash
+$ sudo apt-cache search php7*
+```
+
 ### Etapa 3: Instalar o Composer para fazer o download do Laravel
 
 Execute os comandos abaixo para instalar o pacote composer e instale, você deve ter o pacote curl instalado para os comandos funcionarem.
@@ -236,11 +243,26 @@ $ sudo systemctl restart apache2
 $ sudo service apache2 restart
 ```
 
-#### Instalar módulos do PHP 7
 
-Você também pode precisar instalar módulos com base nos requisitos de sua aplicação. Use o seguinte comando para procurar os módulos do PHP 7 disponíveis no repositório de pacotes.
+#### Ajustar o Firewall para Permitir Tráfego Web
+Agora, assumindo que você seguiu as instruções de configuração inicial do servidor para habilitar o firewall UFW, certifique-se de que seu firewall permite tráfego HTTP e HTTPS. Você pode certificar-se de que o UFW tem um perfil de aplicativo para o Apache assim:
 ```bash
-$ sudo apt-cache search php7*
+$ sudo ufw app list
+```
+
+Se você olhar para o perfil Apache Full, ele deve mostrar que ele habilita tráfego para as portas 80 e 443:
+```bash
+$ sudo ufw app info "Apache Full"
+```
+
+Permita o tráfego entrante HTTP e HTTPS para esse perfil:
+```bash
+$ sudo ufw allow in "Apache Full"
+```
+
+Você pode fazer uma verificação imediata para verificar se tudo correu como planejado visitando o endereço IP público do seu servidor no seu navegador web (Veja a nota abaixo do próximo cabeçalho para descobrir qual é o seu endereço IP público se você ainda não tiver essa informação)
+```bash
+$ http://ip_do_seu_servidor
 ```
 
 ### Etapa 6 - Instalação do MySQL
@@ -287,25 +309,4 @@ Estimated strength of the password: 100
 Change the password for root ? ((Press y|Y for Yes, any other key for No) : n
 
 Para o restante das perguntas, pressione Y e aperte a tecla Enter para cada prompt. Isso irá remover alguns usuários anônimos e o banco de dados de teste, desabilitar logins remotos de root, e carregar essas novas regras de forma que o MySQL respeite imediatamente as alterações que fizemos. 
-
-#### Ajustar o Firewall para Permitir Tráfego Web
-Agora, assumindo que você seguiu as instruções de configuração inicial do servidor para habilitar o firewall UFW, certifique-se de que seu firewall permite tráfego HTTP e HTTPS. Você pode certificar-se de que o UFW tem um perfil de aplicativo para o Apache assim:
-```bash
-$ sudo ufw app list
-```
-
-Se você olhar para o perfil Apache Full, ele deve mostrar que ele habilita tráfego para as portas 80 e 443:
-```bash
-$ sudo ufw app info "Apache Full"
-```
-
-Permita o tráfego entrante HTTP e HTTPS para esse perfil:
-```bash
-$ sudo ufw allow in "Apache Full"
-```
-
-Você pode fazer uma verificação imediata para verificar se tudo correu como planejado visitando o endereço IP público do seu servidor no seu navegador web (Veja a nota abaixo do próximo cabeçalho para descobrir qual é o seu endereço IP público se você ainda não tiver essa informação)
-```bash
-$ http://ip_do_seu_servidor
-```
 
