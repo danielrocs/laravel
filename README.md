@@ -340,7 +340,8 @@ Change the password for root ? ((Press y|Y for Yes, any other key for No) : n
 
 Para o restante das perguntas, pressione Y e aperte a tecla Enter para cada prompt. Isso irá remover alguns usuários anônimos e o banco de dados de teste, desabilitar logins remotos de root, e carregar essas novas regras de forma que o MySQL respeite imediatamente as alterações que fizemos. 
 
-#### 
+#### Alterando usuário root
+Acontece que você não pode mais usar o usuário root na versão 5.7. Isso significa que você não pode mais rodar o mysql -u root e ter que fazer o sudo mysql -u root.
 
 Estas etapas funcionaram para mim em vários sistemas usando Ubuntu 16.04, Apache 2.4, MariaDB, PDO
 
