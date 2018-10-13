@@ -171,4 +171,25 @@ Para carregar todas as configurações acima, reinicie o Apache2 executando os c
 $ sudo systemctl restart apache2.service
 ```
 
+Observações: Por padrão, o Ubuntu não permite acesso através do navegador da web a qualquer arquivo, exceto aqueles localizados em /var/www, public_html (quando habilitado) e  /usr/share (para aplicativos da web). Se o seu site estiver usando uma raiz de documento da Web localizada em outro lugar (como em /srv), talvez você precise incluir na lista de permissões o diretório raiz do documento em /etc/apache2/apache2.conf.
+
+A raiz do documento padrão do Ubuntu é /var/www/html. Você pode criar seus próprios hosts virtuais em /var/www. Isso é diferente dos lançamentos anteriores, o que proporciona maior segurança na caixa.
+
+Em caso de erro na exibição editi o arquivo 
+```bash
+$ sudo nano /etc/apache2/apache2.conf
+```
+
+```bash
+Atualize o arquivo para 
+<Directory /var/www/html/MyProject/public>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+</Directory>
+```
+
+
+
+
 
