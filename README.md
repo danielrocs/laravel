@@ -53,12 +53,13 @@ $ php artisan serve
 
 ### Instale o Apache:
 
-Passo 1: Instale o servidor Web Apache2 e o pacote git
+Passo 1: Instale o servidor Web Apache2, curl e o pacote git
 
 ```bash
 $ sudo apt update
 $ sudo apt install apache2
 $ sudo apt install git
+$ sudo apt install curl
 ```
 
 Comando usados para stop, start e enable Apache2 `services` 
@@ -89,7 +90,12 @@ Em seguida, faça a alteração das seguintes linhas abaixo no arquivo e salve.
 - max_input_time = 60 *Em segundos
 - post_max_size = 80M
 
+### Etapa 3: Instalar o Composer para fazer o download do Laravel
 
+Execute os comandos abaixo para instalar o pacote composer e instale, você deve ter o pacote curl instalado para os comandos funcionarem.
+```bash
+$ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+```
 
 
 
