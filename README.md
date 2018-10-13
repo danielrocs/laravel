@@ -340,3 +340,35 @@ Change the password for root ? ((Press y|Y for Yes, any other key for No) : n
 
 Para o restante das perguntas, pressione Y e aperte a tecla Enter para cada prompt. Isso irá remover alguns usuários anônimos e o banco de dados de teste, desabilitar logins remotos de root, e carregar essas novas regras de forma que o MySQL respeite imediatamente as alterações que fizemos. 
 
+#### 
+
+Estas etapas funcionaram para mim em vários sistemas usando Ubuntu 16.04, Apache 2.4, MariaDB, PDO
+
+    log into MYSQL as root
+
+    mysql -u root
+
+    Grant privileges. To a new user execute:
+
+    CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'localhost';
+    FLUSH PRIVILEGES;
+
+    bind to all addresses:
+
+The easiest way is to comment out the line in your /etc/mysql/mariadb.conf.d/50-server.cnf or /etc/mysql/mysql.conf.d/mysqld.cnf file, depending on what system you are running:
+
+    #bind-address = 127.0.0.1 
+
+    exit mysql and restart mysql
+
+    exit
+    service mysql restart
+
+By default it binds only to localhost, but if you comment the line it binds to all interfaces it finds. Commenting out the line is equivalent to bind-address=*.
+
+To check the binding of mysql service execute as root:
+
+    netstat -tupan | grep mysql
+
+
