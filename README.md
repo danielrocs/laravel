@@ -51,7 +51,7 @@ $ php artisan serve
 
 ## Instalar Laravel no Ubuntu 18.04
 
-### Instale o Apache:
+### Etapa 1: Instale o Apache:
 
 Passo 1: Instale o servidor Web Apache2, curl e o pacote git
 
@@ -70,7 +70,7 @@ $ sudo systemctl start apache2.service
 $ sudo systemctl enable apache2.service
 ```
 
-### Step 2: Instale o PHP 7.2 e seus módulos
+### Etapa 2: Instale o PHP 7.2 e seus módulos
 
 Para instalar o PHP e os módulos relacionados, execute os comandos abaixo
 ```bash
@@ -96,6 +96,43 @@ Execute os comandos abaixo para instalar o pacote composer e instale, você deve
 ```bash
 $ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
+
+#### Iniciando um Projeto
+Para iniciar um projeto mude para o diretório wwww e execute os comandos abaixo para fazer o download e instalar o Laravel para o projeto que você deseja criar ... nomeie o projeto como você quiser ... exemplo chamando de "MyProject".
+```bash
+$ cd /var/www/html
+$ sudo composer create-project laravel/laravel MyProject
+```
+
+Depois de executar os comandos acima, um novo diretório de projeto será criado. Execute os comandos abaixo para definir as permissões corretas para esse diretório.
+```bash
+$ sudo chown -R www-data:www-data /var/www/html/MyProject/
+$ sudo chmod -R 755 /var/www/html/MyProject/
+```
+
+### Etapa 4: Configure Apache2
+Finalmente, configure o arquivo de configuração do site Apahce2 para o Laravel. Este arquivo controlará como os usuários acessam o conteúdo do Laravel. Execute os comandos abaixo para criar um novo arquivo de configuração chamado laravel.conf
+```bash
+$ sudo nano /etc/apache2/sites-available/laravel.conf
+```
+Em seguida, copie e cole o conteúdo abaixo no arquivo e salve-o. Substitua a linha realçada pelo seu próprio nome de domínio e localização da raiz do diretório.
+```bash
+<VirtualHost *:80>   
+  ServerAdmin admin@example.com
+     DocumentRoot /var/www/html/MyProject/public
+     ServerName example.com
+
+     <Directory /var/www/html/MyProject/public>
+        Options +FollowSymlinks
+        AllowOverride All
+        Require all granted
+     </Directory>
+
+     ErrorLog ${APACHE_LOG_DIR}/error.log
+     CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+Salve o arquivo e saia.
 
 
 
