@@ -171,6 +171,35 @@ Para carregar todas as configurações acima, reinicie o Apache2 executando os c
 $ sudo systemctl restart apache2.service
 ```
 
+#### Configurações do Apache
+
+Se você puder ler esta página, isso significa que o servidor HTTP Apache instalado neste site está funcionando corretamente. Você deve substituir esse arquivo (localizado em /var/www/html/index.html) antes de continuar a operar seu servidor HTTP.
+
+A configuração padrão do Apache2 do Ubuntu é diferente da configuração padrão do upstream e é dividida em vários arquivos otimizados para interação com as ferramentas do Ubuntu. O sistema de configuração está totalmente documentado em /usr/share/doc/apache2/README.Debian.gz. Consulte isto para a documentação completa. A documentação do próprio servidor da web pode ser encontrada acessando o manual se o pacote apache2-doc foi instalado neste servidor.
+
+O layout de configuração para uma instalação do servidor da web Apache2 em sistemas Ubuntu é o seguinte:
+```bash
+/etc/apache2/
+|-- apache2.conf
+|       `--  ports.conf
+|-- mods-enabled
+|       |-- *.load
+|       `-- *.conf
+|-- conf-enabled
+|       `-- *.conf
+|-- sites-enabled
+|       `-- *.conf
+```
+O apache2.conf é o arquivo de configuração principal. Ele coloca as peças juntas, incluindo todos os arquivos de configuração restantes ao inicializar o servidor da web.
+
+O ports.conf é sempre incluído no arquivo de configuração principal. Ele é usado para determinar as portas de escuta para conexões de entrada e esse arquivo pode ser personalizado a qualquer momento.
+
+Os arquivos de configuração nos diretórios mods-enabled/, conf-enabled/ e sites-enabled/ contêm contêineres de configuração específicos que gerenciam módulos, fragmentos de configuração global ou configurações de host virtual, respectivamente.
+
+Eles são ativados por symlinking arquivos de configuração disponíveis de seus respectivos * -available/ contrapartes. Estes devem ser gerenciados usando nossos ajudantes a2enmod, a2dismod, a2ensite, a2dissite e a2enconf, a2disconf. Veja suas respectivas páginas de manual para informações detalhadas.
+
+O binário é chamado apache2. Devido ao uso de variáveis de ambiente, na configuração padrão, o apache2 precisa ser iniciado interrompido com /etc/init.d/apache2 ou apache2ctl. Chamar /usr/bin/apache2 diretamente não funcionará com a configuração padrão.
+
 Observações: Por padrão, o Ubuntu não permite acesso através do navegador da web a qualquer arquivo, exceto aqueles localizados em /var/www, public_html (quando habilitado) e  /usr/share (para aplicativos da web). Se o seu site estiver usando uma raiz de documento da Web localizada em outro lugar (como em /srv), talvez você precise incluir na lista de permissões o diretório raiz do documento em /etc/apache2/apache2.conf.
 
 A raiz do documento padrão do Ubuntu é /var/www/html. Você pode criar seus próprios hosts virtuais em /var/www. Isso é diferente dos lançamentos anteriores, o que proporciona maior segurança na caixa.
