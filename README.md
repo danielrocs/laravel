@@ -139,6 +139,23 @@ Dica: Para remover um diretório
 $ sudo rm -Rf MyProject
 ```
 
+Outra configuração mais simples
+```bash
+<VirtualHost *:80>
+    ServerName yourdomain.tld
+
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/your-project/public
+
+    <Directory /var/www/html/your-project>
+        AllowOverride All
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
 ### Passo 5: Ative o Laravel e o Rewrite Module
 
 Depois de configurar o VirtualHost acima, habilite-o executando os comandos abaixo
