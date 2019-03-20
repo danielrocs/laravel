@@ -372,4 +372,17 @@ To check the binding of mysql service execute as root:
 
     netstat -tupan | grep mysql
 
+## Erros MySQL
+SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `users` add unique `users_email_unique`(`email`))
+
+Vá até a pasta App/Providers e abra a classe AppServiceProvider, dentro do método boot adicione o seguinte:
+
+```bash
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+```
 
