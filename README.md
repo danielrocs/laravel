@@ -290,11 +290,10 @@ $ sudo mysql -u root -p
 
 Crie um banco de dados e um usuário com permissões para isso. Neste exemplo, o banco de dados é chamado de webdata, o usuário webuser e senha password. Certifique-se de digitar sua própria senha. Isso deve ser diferente da senha raiz do MySQL:
 ```bash
-CREATE DATABASE webdata;
-CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+CREATE DATABASE nome_banco DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
-GRANT ALL ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL ON nome_banco.* TO 'webuser' IDENTIFIED BY 'password';
+GRANT ALL ON nome_banco.* TO 'user'@'localhost' IDENTIFIED BY 'password';
 
 FLUSH PRIVILEGES;
 EXIT;
@@ -386,3 +385,12 @@ public function boot()
 }
 ```
 
+## Permissão de arquivos
+```bash
+sudo chown -R $USER:www-data storage
+sudo chown -R $USER:www-data bootstrap/cache
+then to set directory permission try this:
+
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
