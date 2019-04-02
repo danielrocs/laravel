@@ -3,7 +3,7 @@
 Go to the terminal and type the following command to generate the model and migration file.
 
 ```bash
-php artisan make:model Company -m
+    $ php artisan make:model Company -m
 ```
 
 It will create the model and migration file. Now, update the schema inside <timestamp>create_companies_table.php file.
@@ -19,7 +19,7 @@ It will create the model and migration file. Now, update the schema inside <time
     }
 ```
 
-Now, add the fillable property inside Share.php file.
+Now, add the fillable property inside Company.php file.
 
 ```php
     class Company extends Model
@@ -30,5 +30,14 @@ Now, add the fillable property inside Share.php file.
     }
 ```
 
- ## 2) Create a controller file
+ ## 2) Create routes and controller
+ ```bash
+    $ php artisan make:controller ShareController --resource
+```
+ 
+ 
+ 
+ ## 3) Create the views
+ 
+ 
  
