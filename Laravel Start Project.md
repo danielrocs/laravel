@@ -41,7 +41,7 @@ First, create the CompanyController using the following command.
 Now, inside the folder routes edit the web.php file, add add the following line of code.
 
 ```php
-    Route::resource('shares', 'ShareController');
+    Route::resource('companies', 'CompanyController');
 ```
 
 Actually, by adding the following line, we have registered the multiple routes for our application. We can check it using the following command.
