@@ -15,4 +15,23 @@ It will create the model and migration file. Now, update the schema inside <time
         });
     }
     
+Now, add the fillable property inside Share.php file.
+
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+    class Company extends Model
+    {
+        protected $fillable = ['name'];
+
+        protected $guarded = ['id', 'created_at', 'update_at'];
+
+        protected $table = 'companies';
+    }
+
+
+ ## 2) Create a controller file
  
