@@ -52,5 +52,11 @@ Actually, by adding the following line, we have registered the multiple routes f
  
  ## 3) Create the views
  
- 
+Inside the folder resources -> views folder, create one folder called company.
+
+Inside that folder, create the following three files.
+
+    create.blade.php
+    edit.blade.php
+    index.blade.php
  
