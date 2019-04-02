@@ -30,12 +30,25 @@ Now, add the fillable property inside Company.php file.
     }
 ```
 
- ## 2) Create routes and controller
- ```bash
-    $ php artisan make:controller ShareController --resource
+## 2) Create routes and controller
+ 
+First, create the CompanyController using the following command.
+
+```bash
+    $ php artisan make:controller CompanyController --resource
 ```
- 
- 
+
+Now, inside the folder routes edit the web.php file, add add the following line of code.
+
+```php
+    Route::resource('shares', 'ShareController');
+```
+
+Actually, by adding the following line, we have registered the multiple routes for our application. We can check it using the following command.
+
+```bash
+    $ php artisan route:list
+``` 
  
  ## 3) Create the views
  
