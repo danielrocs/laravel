@@ -29,6 +29,10 @@ Now, add the fillable property inside Company.php file.
         protected $table = 'companies';
     }
 ```
+Finally migrate the model to the database
+```bash
+    $ php artisan migrate
+``` 
 
 ## 2) Create routes and controller
  
@@ -59,4 +63,3 @@ Inside that folder, create the following three files.
     create.blade.php
     edit.blade.php
     index.blade.php
- 
