@@ -63,3 +63,13 @@ Inside that folder, create the following three files.
     create.blade.php
     edit.blade.php
     index.blade.php
+
+## 4) Create a model Role and Permission.
+
+Go to the terminal and type the following command to generate the model and migration file.
+
+```bash
+    $ php artisan make:model Models/Role -m
+    $ php artisan make:model Models/Permission -m
+```
+
