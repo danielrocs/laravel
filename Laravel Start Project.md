@@ -1,3 +1,16 @@
+## 1) Criando um projeto
+
+```bash
+    $ composer create-project --prefer-dist laravel/laravel nome_projeto
+```
+
+## 2) Melhorar o auto complete no laravel
+https://github.com/barryvdh/laravel-ide-helper
+
+```bash
+    $ composer require --dev barryvdh/laravel-ide-helper --dev
+```
+
 ## 1) Create a model with migration file.
 
 Go to the terminal and type the following command to generate the model and migration file.
