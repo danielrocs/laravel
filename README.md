@@ -295,6 +295,9 @@ CREATE DATABASE nome_banco DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 GRANT ALL ON nome_banco.* TO 'webuser' IDENTIFIED BY 'password';
 GRANT ALL ON nome_banco.* TO 'user'@'localhost' IDENTIFIED BY 'password';
 
+create user 'user'@'localhost' identified by 'password';
+grant all on *.* to 'user'@'localhost';
+
 FLUSH PRIVILEGES;
 EXIT;
 ```
