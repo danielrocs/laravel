@@ -73,13 +73,21 @@ $ sudo systemctl enable apache2.service
 ### Etapa 2: Instale o PHP 7.2 e seus módulos
 
 Para instalar o PHP e os módulos relacionados, execute os comandos abaixo
+
+https://www.cloudbooklet.com/how-to-install-php-7-3-on-ubuntu-18-04/
+
 ```bash
+$ sudo apt install software-properties-common
+$ sudo add-apt-repository ppa:ondrej/php
+$ sudo apt update
+
 $ sudo apt install php7.2 libapache2-mod-php7.2 php7.2-mbstring php7.2-xmlrpc php7.2-soap php7.2-gd php7.2-xml php7.2-cli php7.2-zip
+$ sudo apt install php7.3-common php7.3-mysql php7.3-xml php7.3-xmlrpc php7.3-curl php7.3-gd php7.3-imagick php7.3-cli php7.3-dev php7.3-imap php7.3-mbstring php7.3-opcache php7.3-soap php7.3-zip php7.3-intl -y
 ```
 
 Depois de instalar o PHP, execute os comandos abaixo para abrir o arquivo padrão do PHP-FPM.
 ```bash
-$ sudo nano /etc/php/7.2/apache2/php.ini
+$ sudo nano /etc/php/7.3/apache2/php.ini
 ```
 
 Em seguida, faça a alteração das seguintes linhas abaixo no arquivo e salve.
@@ -89,6 +97,18 @@ Em seguida, faça a alteração das seguintes linhas abaixo no arquivo e salve.
 - cgi.fix_pathinfo=0  *não fazer alteração
 - max_input_time = 60 *Em segundos
 - post_max_size = 80M
+
+
+- upload_max_filesize = 32M 
+- post_max_size = 48M 
+- memory_limit = 256M 
+- max_execution_time = 600 
+- max_input_vars = 3000 
+- max_input_time = 1000
+
+
+
+
 
 Instale o PHP Extension para suporte ao MySQL:
 ```bash
